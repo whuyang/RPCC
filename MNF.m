@@ -1,8 +1,8 @@
-function [RD_img]  = fun_MyMNF(img, d)
+function [MNF_img]  = MNF(img, d)
 % Maximun Noise Fraction Based Dimensionality Reduction
 % img: input 3D HSI image (m*n*l)
 % d: excepted output dimensionality
-% RD_img: output dimensionality reduced HSI
+% MNF_img: output dimensionality reduced HSI
 
 % reference: A Transformation for Ordering Multispectral Data in
 %                   Terms of Image Quality with Implications for Noise
@@ -47,6 +47,6 @@ Sigma_N = (1/(sz(1)*sz(2)-1))*center_D_mat*center_D_mat';
 % ------------
 
 project_H = eig_vectors(:, 1:d);
-RD_img_mat = project_H'*Z;
-RD_img = reshape(RD_img_mat' , [m,n,d]);
+MNF_img_mat = project_H'*Z;
+MNF_img = reshape(MNF_img_mat' , [m,n,d]);
 end
